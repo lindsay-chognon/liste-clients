@@ -41,6 +41,7 @@
                     <td>Nom de domaine</td>
                     <td>Coût annuel</td>
                     <td>Client</td>
+                    <td>Action</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,7 +49,15 @@
                     <tr>
                         <td>{{ $nom_de_domaine->nom_domaine  }}</td>
                         <td>{{ $nom_de_domaine->cout_annuel  }} €</td>
-                        <td>{{ $nom_de_domaine->client->societe  }} </td>
+                        <td>{{ $nom_de_domaine->client->id  }} </td>
+                        <td>
+                            <a href="{{ route('noms_de_domaine.show', $nom_de_domaine->id) }}" class="btn btn-outline-info">
+                                <img class="icone" src="{{ asset('eye.png') }}" alt="Icone de modification">
+                            </a>
+                            <a href="{{ route('noms_de_domaine.edit', $nom_de_domaine->id) }}" class="btn btn-outline-info">
+                                <img class="icone" src="{{ asset('edit.png') }}" alt="Icone de modification">
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

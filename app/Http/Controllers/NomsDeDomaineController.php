@@ -68,20 +68,40 @@ class NomsDeDomaineController extends Controller
 
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Noms_de_domaine $noms_de_domaine)
+    public function edit($id)
     {
-        //
+        // Récupération du nom de domaine
+        $nom_de_domaine = Noms_de_domaine::find($id);
+
+        // Récupération de la liste des clients pour la liste déroulante
+        $clients = Clients::all();
+
+        return view('noms_de_domaine.edit', [
+            'nom_de_domaine' => $nom_de_domaine,
+            'clients' => $clients
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Noms_de_domaine $noms_de_domaine)
+    public function update(Request $request, $id)
     {
-        //
+        $nom_de_domaine = Noms_de_domaine::find($id);
+
+        $nom_de_domaine->nom_domaine = $request->nom_domaine;
+        $nom_de_domaine->cout_annuel = $request->cout_annuel;
+        $nom_de_domaine->client_id = $request->client;
+        $nom_de_domaine->updated_at = date("Y-m-d H:i:s");
+
+        $nom_de_domaine->update();
+
+        return redirect()->route('noms_de_domaine.index')->with('message', 'Le nom de domaine a bien été mis à jour.');
     }
 
     /**
