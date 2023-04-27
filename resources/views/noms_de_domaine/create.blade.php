@@ -33,6 +33,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <a href="{{ route('noms_de_domaine.index')  }}" class="btn btn-danger">Retour</a>
             </form>
         </div>
     </div>
