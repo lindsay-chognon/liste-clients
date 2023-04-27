@@ -19,7 +19,7 @@
                     <input type="text" id="nom_domaine" name="nom_domaine" class="form-control" required="">
                 </div>
                 <div class="form-group">
-                    <label for="cout_annuel">Cout annuel</label>
+                    <label for="cout_annuel">Cout annuel en €</label>
                     <input type="number" id="cout_annuel" name="cout_annuel" class="form-control" pattern="[0-9]+" required="">
                 </div>
 
