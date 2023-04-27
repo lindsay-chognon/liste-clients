@@ -49,13 +49,16 @@
                     <tr>
                         <td>{{ $nom_de_domaine->nom_domaine  }}</td>
                         <td>{{ $nom_de_domaine->cout_annuel  }} €</td>
-                        <td>{{ $nom_de_domaine->client->id  }} </td>
+                        <td>{{ $nom_de_domaine->client->societe  }} </td>
                         <td>
-                            <a href="{{ route('noms_de_domaine.show', $nom_de_domaine->id) }}" class="btn btn-outline-info">
-                                <img class="icone" src="{{ asset('eye.png') }}" alt="Icone de modification">
+                            <a href="{{ route('noms_de_domaine.show', $nom_de_domaine->id) }}" class="btn btn-outline-success">
+                                <img class="icone" src="{{ asset('eye.png') }}" alt="Icone de visualisation d'un nom de domaine">
                             </a>
                             <a href="{{ route('noms_de_domaine.edit', $nom_de_domaine->id) }}" class="btn btn-outline-info">
-                                <img class="icone" src="{{ asset('edit.png') }}" alt="Icone de modification">
+                                <img class="icone" src="{{ asset('edit.png') }}" alt="Icone de modification d'un nom de domaine">
+                            </a>
+                            <a href="{{ route('noms_de_domaine.edit', $nom_de_domaine->id) }}" class="btn btn-outline-danger">
+                                <img class="icone" src="{{ asset('bin.png') }}" alt="Icone de suppression d'un nom de domaine">
                             </a>
                         </td>
                     </tr>
