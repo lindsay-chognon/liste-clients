@@ -4,6 +4,7 @@
     <title>Liste des noms de domaine</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo asset('css/css.css')?>" type="text/css">
 </head>
 <body>
     <div class="row">
@@ -18,6 +19,13 @@
                 </button>
             </span>
                 </div>
+            </form>
+        </div>
+        <div class="col-7 p-5 text-right">
+            <form action="{{ route('noms_de_domaine.create')  }}">
+                <button type="submit" class="btn btn-outline-info">
+                    Créer un nom de domaine
+                </button>
             </form>
         </div>
 
