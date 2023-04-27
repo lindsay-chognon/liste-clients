@@ -13,8 +13,8 @@
                 <div class="input-group">
                     <input type="text" class="form-control" name="search"
                            placeholder="Rechercher un nom de domaine"> <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">
-                    Rechercher
+                <button type="submit" class="btn btn-outline-info">
+                    🔍
                 </button>
             </span>
                 </div>
