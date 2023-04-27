@@ -13,7 +13,21 @@ class NomsDeDomaineController extends Controller
      */
     public function index()
     {
-        //
+        $noms_de_domaine = Noms_de_domaine::all();
+        return view('noms_de_domaine.index', ['noms_de_domaine' => $noms_de_domaine]);
+    }
+
+    public function search(Request $request){
+
+        $search = $request->input('search');
+
+        // Recherche dans la colonne nom_domaine
+        $noms_de_domaine = Noms_de_domaine::query()
+            ->where('nom_domaine', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Retourne la liste prenant en compte la recherche
+        return view('noms_de_domaine.index', ['noms_de_domaine' => $noms_de_domaine]);
     }
 
     /**
