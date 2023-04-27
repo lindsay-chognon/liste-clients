@@ -59,9 +59,13 @@ class NomsDeDomaineController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Noms_de_domaine $noms_de_domaine)
+    public function show($id)
     {
-        //
+        // Récupération du nom de domaine
+        $nom_de_domaine = Noms_de_domaine::find($id);
+
+        return view('noms_de_domaine.show', ['nom_de_domaine' => $nom_de_domaine]);
+
     }
 
     /**
