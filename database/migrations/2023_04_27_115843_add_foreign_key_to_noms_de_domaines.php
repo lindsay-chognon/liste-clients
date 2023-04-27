@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('noms_de_domaines', function (Blueprint $table) {
+        Schema::table('noms_de_domaine', function (Blueprint $table) {
             $table->foreignId('client_id')->constrained('clients')->after('cout_annuel');
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('noms_de_domaines', function (Blueprint $table) {
+        Schema::table('noms_de_domaine', function (Blueprint $table) {
             //
         });
     }

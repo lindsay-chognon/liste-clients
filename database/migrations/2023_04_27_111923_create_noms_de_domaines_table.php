@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('noms_de_domaines', function (Blueprint $table) {
+        Schema::create('noms_de_domaine', function (Blueprint $table) {
             $table->id();
             $table->string('nom_domaine', 255)->unique();
             $table->float('cout_annuel');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('noms_de_domaines');
+        Schema::dropIfExists('noms_de_domaine');
     }
 };
