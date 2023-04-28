@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-5 p-5">
+        <div class="col-6 p-5">
             <form class="form-icone" action="{{ route('nom_de_domaine_search') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="input-group">
@@ -35,12 +35,24 @@
                 <a href="{{ route('noms_de_domaine.index')  }}" class="btn btn-info">Revenir à la liste</a>
             @endif
         </div>
-        <div class="col-7 p-5 text-right">
+
+        <div class="col-6 p-5 text-right">
             <form action="{{ route('noms_de_domaine.create')  }}">
                 <button type="submit" class="btn btn-outline-info">
                     Créer un nom de domaine
                 </button>
             </form>
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Trier par
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ url('noms_de_domaine?sort=domaine_asc')  }}">Domaine : A - Z</a>
+                    <a class="dropdown-item" href="{{ url('noms_de_domaine?sort=domaine_desc')  }}">Domaine : Z - A</a>
+                    <a class="dropdown-item" href="{{ url('noms_de_domaine?sort=cout_asc')  }}">Coût annuel croissant</a>
+                    <a class="dropdown-item" href="{{ url('noms_de_domaine?sort=cout_desc')  }}">Coût annuel décroissant</a>
+                </div>
+            </div>
         </div>
 
     </div>

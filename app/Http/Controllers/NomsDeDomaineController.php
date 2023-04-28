@@ -13,7 +13,29 @@ class NomsDeDomaineController extends Controller
      */
     public function index()
     {
-        $noms_de_domaine = Noms_de_domaine::all()->sortBy('nom_domaine');
+        // Si il y a un paramètre de tri dans l'URL, on l'applique
+        if(request()->sort) {
+            switch (request()->sort) {
+                case "domaine_asc":
+                    $noms_de_domaine = Noms_de_domaine::all()->sortBy('nom_domaine');
+                    break;
+                case "domaine_desc":
+                    $noms_de_domaine = Noms_de_domaine::all()->sortByDesc('nom_domaine');
+                    break;
+                case "cout_asc":
+                    $noms_de_domaine = Noms_de_domaine::all()->sortBy('cout_annuel');
+                    break;
+                case "cout_desc":
+                    $noms_de_domaine = Noms_de_domaine::all()->sortByDesc('cout_annuel');
+                    break;
+                default:
+                    $noms_de_domaine = Noms_de_domaine::all()->sortBy('nom_domaine');
+            }
+
+        } else {
+            $noms_de_domaine = Noms_de_domaine::all()->sortBy('nom_domaine');
+        }
+
         return view('noms_de_domaine.index', ['noms_de_domaine' => $noms_de_domaine]);
     }
 
