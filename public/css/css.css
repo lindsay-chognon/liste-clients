@@ -2,3 +2,7 @@
     height: 1.3em;
     width: auto;
 }
+
+.form-icone {
+    display: inline-block;
+}
