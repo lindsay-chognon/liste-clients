@@ -107,8 +107,11 @@ class NomsDeDomaineController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Noms_de_domaine $noms_de_domaine)
+    public function destroy($id)
     {
-        //
+        $nom_de_domaine = Noms_de_domaine::find($id);
+        $nom_de_domaine->delete();
+
+        return redirect()->route('noms_de_domaine.index')->with('message', 'Le nom de domaine a bien été supprimé.');
     }
 }

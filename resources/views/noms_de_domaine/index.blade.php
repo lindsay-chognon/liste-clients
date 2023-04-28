@@ -57,9 +57,13 @@
                             <a href="{{ route('noms_de_domaine.edit', $nom_de_domaine->id) }}" class="btn btn-outline-info">
                                 <img class="icone" src="{{ asset('edit.png') }}" alt="Icone de modification d'un nom de domaine">
                             </a>
-                            <a href="{{ route('noms_de_domaine.edit', $nom_de_domaine->id) }}" class="btn btn-outline-danger">
-                                <img class="icone" src="{{ asset('bin.png') }}" alt="Icone de suppression d'un nom de domaine">
-                            </a>
+                            <form class="form-icone" action="{{ route('noms_de_domaine.destroy', $nom_de_domaine->id)  }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?')">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-outline-danger">
+                                    <img class="icone" src="{{ asset('bin.png') }}" alt="Icone de suppression d'un nom de domaine">
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
