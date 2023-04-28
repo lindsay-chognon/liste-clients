@@ -8,6 +8,15 @@
 </head>
 <body>
     <div class="row">
+        <div class="col-md">
+            @if (session('message'))
+                <div class="alert alert-info text-center m-5">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         <div class="col-5 p-5">
             <form action="{{ route('nom_de_domaine_search') }}" method="POST">
                 {{ csrf_field() }}
