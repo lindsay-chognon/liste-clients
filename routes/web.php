@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', [\App\Http\Controllers\NomsDeDomaineController::class, 'index']);
+
 
 // Route ressource pour noms de domaine
 Route::resource('noms_de_domaine', 'App\Http\Controllers\NomsDeDomaineController');
