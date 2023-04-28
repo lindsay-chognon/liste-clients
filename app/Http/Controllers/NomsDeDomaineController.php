@@ -45,6 +45,13 @@ class NomsDeDomaineController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation des champs
+        $validated = $request->validate([
+            'nom_domaine' => 'required|unique:noms_de_domaines|max:255',
+            'cout_annuel' => 'required|decimal:0,2',
+            'client' => 'required|integer'
+        ]);
+
         $noms_de_domaines = new Noms_de_domaine;
         $noms_de_domaines->nom_domaine = $request->nom_domaine;
         $noms_de_domaines->cout_annuel = $request->cout_annuel;
@@ -92,6 +99,13 @@ class NomsDeDomaineController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Validation des champs
+        $validated = $request->validate([
+            'nom_domaine' => 'required|max:255',
+            'cout_annuel' => 'required|decimal:0,2',
+            'client' => 'required|integer'
+        ]);
+
         $nom_de_domaine = Noms_de_domaine::find($id);
 
         $nom_de_domaine->nom_domaine = $request->nom_domaine;

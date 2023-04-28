@@ -7,6 +7,15 @@
 </head>
 <body>
 <div class="container mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header text-center font-weight-bold">
             Ajouter un nom de domaine
@@ -16,18 +25,18 @@
                 @csrf
                 <div class="form-group">
                     <label for="nom_domaine">Nom de domaine</label>
-                    <input type="text" id="nom_domaine" name="nom_domaine" class="form-control" required="">
+                    <input type="text" id="nom_domaine" name="nom_domaine" class="form-control" required="" value="{{ old('nom_domaine')  }}" >
                 </div>
                 <div class="form-group">
                     <label for="cout_annuel">Cout annuel en €</label>
-                    <input type="number" id="cout_annuel" name="cout_annuel" class="form-control" pattern="[0-9]+" required="">
+                    <input type="number" id="cout_annuel" name="cout_annuel" class="form-control" pattern="[0-9]+" required="" value="{{ old('cout_annuel')  }}">
                 </div>
 
                 <div class="form-group">
                     <label for="client">Client</label>
                     <select name="client" id="client" class="form-control">
                         @foreach($clients as $client)
-                            <option value="{{ $client->id }}">{{ $client->societe }}</option>
+                            <option {{ old('client') == $client->id ? 'selected = "selected"' : '' }} value="{{ $client->id }}">{{ $client->societe }}</option>
                         @endforeach
                     </select>
                 </div>

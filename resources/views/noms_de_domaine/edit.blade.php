@@ -7,6 +7,15 @@
 </head>
 <body>
 <div class="container mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header text-center font-weight-bold">
             Modifier {{ $nom_de_domaine->nom_domaine  }}
@@ -17,21 +26,33 @@
                 @csrf
                 <div class="form-group">
                     <label for="nom_domaine">Nom de domaine</label>
-                    <input type="text" id="nom_domaine" name="nom_domaine" class="form-control" required="" value="{{ $nom_de_domaine->nom_domaine  }}">
+                    <input type="text" id="nom_domaine" name="nom_domaine" class="form-control" required=""
+                           @if(!$errors->any()) value="{{ $nom_de_domaine->nom_domaine }}"
+                           @else value="{{ old('nom_domaine')  }}"
+                        @endif
+                    >
                 </div>
                 <div class="form-group">
                     <label for="cout_annuel">Cout annuel en €</label>
-                    <input type="number" id="cout_annuel" name="cout_annuel" class="form-control" pattern="[0-9]+" required="" value="{{ $nom_de_domaine->cout_annuel  }}">
+                    <input type="number" id="cout_annuel" name="cout_annuel" class="form-control" pattern="[0-9]+" required=""
+                           @if(!$errors->any()) value="{{ $nom_de_domaine->cout_annuel }}"
+                           @else value="{{ old('cout_annuel')  }}"
+                           @endif
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="client">Client</label>
                     <select name="client" id="client" class="form-control">
                         @foreach($clients as $client)
-                            @if($nom_de_domaine->client->id === $client->id)
-                                <option value="{{ $client->id }}" selected>{{ $client->societe }}</option>
+                            @if(!$errors->any())
+                                @if($nom_de_domaine->client->id === $client->id)
+                                    <option value="{{ $client->id }}" selected>{{ $client->societe }}</option>
+                                @else
+                                    <option value="{{ $client->id }}">{{ $client->societe }}</option>
+                                @endif
                             @else
-                                <option value="{{ $client->id }}">{{ $client->societe }}</option>
+                                <option value="{{ $client->id }}" {{ old('client')==$client->id ? 'selected="selected"' : '' }} >{{ $client->societe }}</option>
                             @endif
                         @endforeach
                     </select>
