@@ -13,7 +13,7 @@ class NomsDeDomaineController extends Controller
      */
     public function index()
     {
-        $noms_de_domaine = Noms_de_domaine::all();
+        $noms_de_domaine = Noms_de_domaine::all()->sortBy('nom_domaine');
         return view('noms_de_domaine.index', ['noms_de_domaine' => $noms_de_domaine]);
     }
 
