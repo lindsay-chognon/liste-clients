@@ -18,17 +18,20 @@
     </div>
     <div class="row">
         <div class="col-5 p-5">
-            <form action="{{ route('nom_de_domaine_search') }}" method="POST">
+            <form class="form-icone" action="{{ route('nom_de_domaine_search') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="input-group">
                     <input type="text" class="form-control" name="search"
-                           placeholder="Rechercher un nom de domaine"> <span class="input-group-btn">
+                           placeholder="Rechercher un domaine"> <span class="input-group-btn">
                 <button type="submit" class="btn btn-outline-info">
                     🔍
                 </button>
             </span>
                 </div>
             </form>
+            @if(request()->is('nom_de_domaine_search'))
+                <a href="{{ route('noms_de_domaine.index')  }}" class="btn btn-info">Revenir à la liste</a>
+            @endif
         </div>
         <div class="col-7 p-5 text-right">
             <form action="{{ route('noms_de_domaine.create')  }}">
